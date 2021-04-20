@@ -1,2 +1,9 @@
 ---
 # tasks file for ansible-role-sanity
+
+- name: assert all vars are set
+  assert: { that: "{{ item }} != '' " }
+  with_items:
+  - url
+  - username
+  - password

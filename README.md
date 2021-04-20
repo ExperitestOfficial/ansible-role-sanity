@@ -1,7 +1,7 @@
-Role Name
+Sanity for Experitest Cloud
 =========
 
-Sanity check for Experitest Cloud
+This role will performe sanity tests on Experitest Cloud
 
 Requirements
 ------------
@@ -11,7 +11,11 @@ Any pre-requisites that may not be covered by Ansible itself or the role should 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+| Name | Description | Type | Default | Required |
+|------|-------------|:----:|:-----:|:-----:|
+| url | cloud full URL to access (including https) | string |  | no |
+| username | cloud admin username | string |  | no |
+| password | cloud admin password | string |  | no |
 
 Dependencies
 ------------
