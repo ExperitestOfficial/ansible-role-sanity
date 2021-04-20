@@ -1,7 +1,7 @@
 Role Name
 =========
 
-Sanity check for Experitest Cloud
+A brief description of the role goes here.
 
 Requirements
 ------------

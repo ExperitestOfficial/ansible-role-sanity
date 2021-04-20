@@ -1,0 +1,4 @@
+.vscode/
+*.retry
+*.pyc
+.git
