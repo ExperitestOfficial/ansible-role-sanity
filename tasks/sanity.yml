@@ -15,14 +15,22 @@
   become: yes
   when: ansible_os_family == "RedHat"
 
-- name: linux copy chromedrive
-  copy:
-    src: chromedriver
-    dest: "/opt/Experitest/sanity"
-    owner: "{{ ansible_user_id }}"
-    mode: '0777'
-  become: yes
-  when: ansible_os_family == "RedHat"
+# - name: linux copy chromedrive
+#   copy:
+#     src: chromedriver
+#     dest: "/opt/Experitest/sanity"
+#     owner: "{{ ansible_user_id }}"
+#     mode: '0777'
+#   become: yes
+#   when: ansible_os_family == "RedHat"
+
+- name: download chromedriver to sanity folder
+  unarchive:
+    src: "http://chromedriver.storage.googleapis.com/{{ chromedriver_version.content | trim }}/chromedriver_linux64.zip"
+    dest: "{{ sanity_folder_path }}"
+    copy: no
+    mode: 0755
+  become: no
 
 - name: print java full command
   debug: msg="export DISPLAY=:0 && java -jar {{ jar_file_path }} {{ url }} {{ username }} {{ password }} {{ chrome_driver_path }}"
