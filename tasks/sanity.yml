@@ -1,0 +1,32 @@
+
+- name: Creates directory
+  file:
+    path: /opt/Experitest/sanity
+    state: directory
+    owner: "{{ ansible_user_id }}"
+  become: yes
+
+- name: linux copy jar
+  copy:
+    src: CloudSanity.main.jar
+    dest: "/opt/Experitest/sanity"
+    owner: "{{ ansible_user_id }}"
+    mode: '0777'
+  become: yes
+  when: ansible_os_family == "RedHat"
+
+- name: linux copy chromedrive
+  copy:
+    src: chromedriver
+    dest: "/opt/Experitest/sanity"
+    owner: "{{ ansible_user_id }}"
+    mode: '0777'
+  become: yes
+  when: ansible_os_family == "RedHat"
+
+- name: print java full command
+  debug: msg="java -jar {{ je_jar_path }} {{ url }} {{ username }} {{ password }}"
+
+- name: start jar
+  shell: java -jar {{ je_jar_path }} {{ url }} {{ username }} {{ password }}
+  when: ansible_os_family == "RedHat"

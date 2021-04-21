@@ -12,3 +12,6 @@
   - url
   - username
   - password
+
+- name: sanity task
+  include_tasks: "tasks/sanity.yml"
