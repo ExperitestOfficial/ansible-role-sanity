@@ -24,6 +24,15 @@
 #   become: yes
 #   when: ansible_os_family == "RedHat"
 
+- name: Get the latest release for chromedriver
+  uri:
+    url: http://chromedriver.storage.googleapis.com/LATEST_RELEASE
+    return_content: yes
+  register: chromedriver_version
+
+- name: debug
+  debug: msg="{{ chromedriver_version.content | trim }}"
+
 - name: download chromedriver to sanity folder
   unarchive:
     src: "http://chromedriver.storage.googleapis.com/{{ chromedriver_version.content | trim }}/chromedriver_linux64.zip"
