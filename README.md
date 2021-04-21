@@ -5,11 +5,11 @@ This role will perform sanity tests on Experitest Cloud
 
 Requirements
 ------------
-
-Supports Linux host only
+This role needs to run on dedicated Linux machine that has UI.
 
 Role Variables
 --------------
+To run this role - need to provide the following parameters of Experitet Cloud
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
