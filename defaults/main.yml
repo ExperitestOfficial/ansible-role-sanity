@@ -1,4 +1,6 @@
 ---
 # defaults file for ansible-role-sanity
 
-je_jar_path: "/opt/Experitest/sanity/CloudSanity.main.jar"
+sanity_folder_path: "/opt/Experitest/sanity"
+jar_file_path: "{{ sanity_folder_path }}/CloudSanity.main.jar"
+chrome_driver_path: "{{ sanity_folder_path }}/chromedriver"

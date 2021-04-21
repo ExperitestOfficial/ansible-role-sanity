@@ -25,8 +25,8 @@
   when: ansible_os_family == "RedHat"
 
 - name: print java full command
-  debug: msg="java -jar {{ je_jar_path }} {{ url }} {{ username }} {{ password }}"
+  debug: msg="java -jar {{ jar_file_path }} {{ url }} {{ username }} {{ password }} {{ chrome_driver_path }}"
 
 - name: start jar
-  shell: java -jar {{ je_jar_path }} {{ url }} {{ username }} {{ password }}
+  shell: java -jar {{ jar_file_path }} {{ url }} {{ username }} {{ password }} {{ chrome_driver_path }}
   when: ansible_os_family == "RedHat"
