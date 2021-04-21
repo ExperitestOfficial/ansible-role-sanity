@@ -41,11 +41,16 @@
     mode: 0755
   become: no
 
-- name: Get the latest release for chrome
-  uri:
-    url: https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-    return_content: yes
-  register: chrome
+- name: Install wget
+  yum:
+    name: wget
+    state: present
+  become: yes
+
+- name: download chrome
+  command: wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+  become: yes
+  when: ansible_os_family == "RedHat"
 
 - name: Install chrome
   yum:
