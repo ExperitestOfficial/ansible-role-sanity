@@ -32,6 +32,18 @@
     mode: 0755
   become: no
 
+- name: Get the latest release for chrome
+  uri:
+    url: https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+    return_content: yes
+  register: chrome
+
+- name: Install chrome
+  yum:
+    name: "google-chrome-stable_current_x86_64.rpm"
+    state: present
+  become: yes
+
 - name: print java full command
   debug: msg="export DISPLAY=:0 && java -jar {{ jar_file_path }} {{ url }} {{ username }} {{ password }} {{ chrome_driver_path }}"
 
