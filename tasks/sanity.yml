@@ -63,3 +63,7 @@
 
 - name: start jar
   shell: export DISPLAY=:0 && java -jar {{ jar_file_path }} {{ url }} {{ username }} {{ password }} {{ chrome_driver_path }}
+  register: result
+  
+- name: test results
+  debug: msg="{{ result.stdout_lines }}"
