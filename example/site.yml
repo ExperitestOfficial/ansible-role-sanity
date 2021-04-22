@@ -1,0 +1,9 @@
+
+- hosts: sanity-machine
+
+  roles:
+    - role: sanity
+      url: "https://cloud.experitest.com"
+      username: "cloudAdminUser "
+      password: "cloudAdminPassword"
+
