@@ -66,7 +66,7 @@
   become: yes
 
 - name: print java full command
-  debug: msg="export DISPLAY=:0 && java -jar {{ jar_file_path }} {{ url }} {{ username }} {{ password }} {{ chrome_driver_path }}"
+  debug: msg="export DISPLAY=:0 && java -jar {{ jar_file_path }} {{ url }} YourUsername YourPassword {{ chrome_driver_path }}"
 
 - name: start jar
   shell: export DISPLAY=:0 && java -jar {{ jar_file_path }} {{ url }} {{ username }} {{ password }} {{ chrome_driver_path }}
