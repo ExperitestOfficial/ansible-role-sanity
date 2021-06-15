@@ -22,6 +22,24 @@
   become: yes
   when: ansible_os_family == "RedHat"
 
+- name: linux copy android app
+  copy:
+    src: com.experitest.ExperiBank.LoginActivity.apk
+    dest: "/opt/Experitest/sanity"
+    owner: "{{ ansible_user_id }}"
+    mode: '0777'
+  become: yes
+  when: ansible_os_family == "RedHat"
+
+- name: linux copy ios app
+  copy:
+    src: EriBank.ipa
+    dest: "/opt/Experitest/sanity/apps"
+    owner: "{{ ansible_user_id }}"
+    mode: '0777'
+  become: yes
+  when: ansible_os_family == "RedHat"
+
 # - name: linux copy chromedrive
 #   copy:
 #     src: chromedriver
@@ -69,8 +87,10 @@
   debug: msg="export DISPLAY=:0 && java -jar {{ jar_file_path }} {{ url }} YourUsername YourPassword {{ chrome_driver_path }}"
 
 - name: start jar
-  shell: export DISPLAY=:0 && java -jar {{ jar_file_path }} {{ url }} {{ username }} {{ password }} {{ chrome_driver_path }}
+  shell: export DISPLAY=:0 && java -jar {{ jar_file_path }} {{ url }} {{ username }} {{ password }} {{ chrome_driver_path }} {{ android_app_path }} {{ ios_app_path }} {{is_reporter}} {{is_selenium}} {{is_safari}}
   register: result
+
+
   
 - name: test results
   debug: msg="{{ result.stdout_lines }}"

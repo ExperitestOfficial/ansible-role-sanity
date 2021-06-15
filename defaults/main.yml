@@ -4,3 +4,5 @@
 sanity_folder_path: "/opt/Experitest/sanity"
 jar_file_path: "{{ sanity_folder_path }}/CloudSanity.main.jar"
 chrome_driver_path: "{{ sanity_folder_path }}/chromedriver"
+android_app_path: "{{ sanity_folder_path }}/apps/com.experitest.ExperiBank.LoginActivity.apk"
+ios_app_path: "{{ sanity_folder_path }}/apps/EriBank.ipa"
