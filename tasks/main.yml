@@ -12,6 +12,9 @@
   - url
   - username
   - password
+  - is_reporter
+  - is_selenium
+  - is_safari
 
 - name: sanity task
   include_tasks: "tasks/sanity.yml"
