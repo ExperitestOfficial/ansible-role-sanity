@@ -87,8 +87,9 @@
   debug: msg="export DISPLAY=:0 && java -jar {{ jar_file_path }} {{ url }} YourUsername YourPassword {{ chrome_driver_path }} {{ android_app_path }} {{ ios_app_path }} {{ is_reporter }} {{ is_selenium }} {{ is_safari }}"
 
 - name: start jar
-  shell: export DISPLAY=:0 && java -jar {{ jar_file_path }} {{ url }} {{ username }} {{ password }} {{ chrome_driver_path }} {{ android_app_path }} {{ ios_app_path }} {{ is_reporter }} {{ is_selenium }} {{ is_safari }}
+  shell: export DISPLAY=:0 && java -jar {{ jar_file_path }} {{ url }} {{ username }} {{ password }} {{ chrome_driver_path }} {{ android_app_path }} {{ ios_app_path }} {{ is_reporter }} {{ is_selenium }} {{ is_safari }} {{ is_appium_oss }}
   register: result
+  become: no
 
 
   

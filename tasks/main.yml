@@ -15,6 +15,7 @@
   - is_reporter
   - is_selenium
   - is_safari
+  - is_appium_oss
 
 - name: sanity task
   include_tasks: "tasks/sanity.yml"
