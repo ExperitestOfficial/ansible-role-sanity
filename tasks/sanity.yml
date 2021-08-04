@@ -1,4 +1,11 @@
 
+- name: make sure unzip is installed
+  yum:
+    name: unzip
+    state: present
+    lock_timeout: 180
+  become: yes
+
 - name: Creates directory
   file:
     path: /opt/Experitest/sanity
