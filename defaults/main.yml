@@ -1,8 +1,17 @@
 ---
 # defaults file for ansible-role-sanity
 
-sanity_folder_path: "/opt/Experitest/sanity"
-jar_file_path: "{{ sanity_folder_path }}/CloudSanity.main.jar"
-chrome_driver_path: "{{ sanity_folder_path }}/chromedriver"
-android_app_path: "{{ sanity_folder_path }}/com.experitest.ExperiBank.LoginActivity.apk"
-ios_app_path: "{{ sanity_folder_path }}/EriBank.ipa"
+installation_folder: "/opt/Experitest/sanity"
+chrome_driver_path: "{{ installation_folder }}/chromedriver"
+
+sanity_jar: "CloudSanity.main.jar"
+android_app: "com.experitest.ExperiBank.LoginActivity.apk"
+ios_app: "EriBank.ipa"
+
+temp_folder: "/var/tmp/Experitest"
+
+custom_download_url: ""
+
+cdn_name: "devops-artifacts.experitest.com"
+relative_path: "sanity/linux"
+s3_download_url: "https://{{ cdn_name }}/{{ relative_path }}"
