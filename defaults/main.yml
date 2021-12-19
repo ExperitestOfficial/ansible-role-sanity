@@ -7,9 +7,9 @@ sanity_jar: "CloudSanity.main.jar"
 android_app: "com.experitest.ExperiBank.LoginActivity.apk"
 ios_app: "EriBank.ipa"
 
-jar_file_path: "{{ installation_folder }}/sanity_jar"
-android_app_path: "{{ installation_folder }}/android_app"
-ios_app_path: "{{ installation_folder }}/ios_app"
+jar_file_path: "{{ installation_folder }}/{{sanity_jar}}"
+android_app_path: "{{ installation_folder }}/{{android_app}}"
+ios_app_path: "{{ installation_folder }}/{{ios_app}}"
 chrome_driver_path: "{{ installation_folder }}/chromedriver"
 
 # # parameters for sanity
