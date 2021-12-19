@@ -82,15 +82,17 @@
     mode: 0755
   become: no
 
-
 - name: download chrome
-  command: wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+  get_url:
+    url: "https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm"
+    dest: "{{ installation_folder }}/google-chrome-stable_current_x86_64.rpm"
+    timeout: "{{ download_timeout | default(60) }}"
   become: yes
   when: ansible_os_family == "RedHat"
-
+  
 - name: Install chrome
   yum:
-    name: "google-chrome-stable_current_x86_64.rpm"
+    name: "{{ installation_folder }}/google-chrome-stable_current_x86_64.rpm"
     state: present
   become: yes
 
