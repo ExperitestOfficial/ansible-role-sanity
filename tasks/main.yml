@@ -17,5 +17,10 @@
   - is_safari
   - is_appium_oss
 
+
+- name: config system
+  include_tasks: "tasks/config.yml"
+  when: sanity_config | default('no') | bool
+
 - name: sanity task
   include_tasks: "tasks/sanity.yml"

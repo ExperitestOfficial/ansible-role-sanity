@@ -1,0 +1,59 @@
+
+- name: make sure unzip is installed
+  yum:
+    name: unzip
+    state: present
+    lock_timeout: 180
+  become: yes
+
+- name: Install wget
+  yum:
+    name: wget
+    state: present
+    lock_timeout: 180
+  become: yes
+
+- name: ensure installation folder exists
+  file:
+    path: "{{ installation_folder }}"
+    state: directory
+    owner: "{{ ansible_user_id }}"
+  become: yes
+
+- name: ensure temp folder exists
+  file:
+    path: "{{ temp_folder }}"
+    state: directory
+    owner: "{{ ansible_user_id }}"
+  become: yes
+
+- name: Get the latest release for chromedriver
+  uri:
+    url: http://chromedriver.storage.googleapis.com/LATEST_RELEASE
+    return_content: yes
+  register: chromedriver_version
+
+- name: debug
+  debug: msg="{{ chromedriver_version.content | trim }}"
+
+- name: download chromedriver to sanity folder
+  unarchive:
+    src: "http://chromedriver.storage.googleapis.com/{{ chromedriver_version.content | trim }}/chromedriver_linux64.zip"
+    dest: "{{ installation_folder }}"
+    copy: no
+    mode: 0755
+  become: no
+
+- name: download chrome
+  get_url:
+    url: "https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm"
+    dest: "{{ installation_folder }}/google-chrome-stable_current_x86_64.rpm"
+    timeout: "{{ download_timeout | default(60) }}"
+  become: yes
+  when: ansible_os_family == "RedHat"
+  
+- name: Install chrome
+  yum:
+    name: "{{ installation_folder }}/google-chrome-stable_current_x86_64.rpm"
+    state: present
+  become: yes
